@@ -1,318 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pritam Shrestha | Music Portfolio</title>
+  <title>Pritam Shrestha - Music Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      line-height: 1.6;
-      background: #111;
-      color: #fff;
-    }
+    * {margin:0; padding:0; box-sizing:border-box;}
+    html {scroll-behavior: smooth;}
+    body {font-family: Arial, sans-serif; line-height:1.4; background:#f4f4f9; color:#333;}
 
+    /* Navbar */
     header {
-  background: #add8e6; /* Light Blue */
-  padding: 20px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-
-    header h1 {
-      margin: 0;
-      font-size: 30px;
-      letter-spacing: 2px;
+      background: linear-gradient(90deg, #add8e6, #87cefa);
+      padding: 6px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+    header h1 {text-align:center; font-size:1rem; margin-bottom:2px;}
 
     nav {
-      margin-top: 10px;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      max-width:1200px;
+      margin:auto;
+    }
+    .nav-links {
+      display:flex;
+      list-style:none;
+      gap:8px;
+    }
+    .nav-links li a {
+      text-decoration:none;
+      color:#000;
+      font-weight:bold;
+      font-size:0.85rem;
+      transition:0.3s;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {color:#ff4c4c; border-bottom:2px solid #ff4c4c;}
+    .hamburger {display:none; font-size:1.3rem; cursor:pointer;}
+
+    /* Banner */
+    .banner {position:relative; width:100%; max-height:250px; overflow:hidden;}
+    .banner img {width:100%; height:auto; display:block;}
+    .banner-text {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      color:#fff; text-align:center; background: rgba(0,0,0,0.5); padding:5px 10px;
+      border-radius:6px; font-size:1rem; box-shadow:0 2px 6px rgba(0,0,0,0.5);
     }
 
-    nav a {
-  color: #000; /* black text for contrast */
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #ff4c4c; /* red hover effect */
-}
-
-
-    nav a:hover {
-      color: #ff4c4c;
-    }
-
+    /* Sections */
     section {
-      padding: 20px 20px;
-      max-width: 1000px;
-      margin: auto;
+      padding:5px 10px;
+      max-width:1200px;
+      margin:auto;
+      opacity:0; transform: translateY(3px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    section.visible {opacity:1; transform:translateY(0);}
+
+    /* Video Grid 3x3 */
+    .video-grid {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: auto;
+      gap:5px;
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #ff4c4c;
-    }
-
-     /* Banner below navbar */
-    
-
-    .banner img {
-      width: 100%;       /* Responsive: fits all screen widths */
-      height: auto;      /* Keeps aspect ratio */
-      display: block;    /* Removes extra space */
-    }
-    /* Page content */
-    .content {
-      width: 1200px;
-      margin: 20px auto;
-      padding: 0px;
-    }
-
-
-    .videos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 200px;
-      border-radius: 10px;
-      border: none;
-    }
-
-    .about, .contact {
-      text-align: center;
-    }
-
-    .social-links a {
-      display: inline-block;
-      margin: 10px;
-      color: #fff;
-      font-size: 20px;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .social-links a:hover {
-      color: #ff4c4c;
-    }
-
-    footer {
-      background: #222;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-    }
-
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /*CSS Added for new iframe*/
     .video-card {
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-  transition: transform 0.3s;
-}
+      background:#fff; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      overflow:hidden; transition:transform 0.3s; position:relative;
+    }
+    .video-card:hover {transform:scale(1.02);}
+    .video-card iframe {aspect-ratio:16/9; width:100%; height:auto; border:none;}
+    .video-card .title-overlay {
+      position:absolute; bottom:0; left:0; right:0;
+      background:rgba(0,0,0,0.7); color:#fff; padding:3px; text-align:center; font-weight:bold;
+      opacity:0; transition:opacity 0.3s; border-bottom-left-radius:6px; border-bottom-right-radius:6px;
+    }
+    .video-card:hover .title-overlay {opacity:1;}
 
-.video-card:hover {
-  transform: translateY(-5px);
-}
+    /* News Grid */
+    .news-grid {display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:5px;}
+    .news-card {background:#fff; padding:5px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
 
-.video-card h3 {
-  margin-top: 10px;
-  font-size: 18px;
-  color: #ff4c4c;
-}
-/*For Education*/
-.education {
-  text-align: center;
-  margin-top: -20px; /* keeps spacing balanced */
-}
+    .education, .contact {background:#fff; padding:5px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+    .contact p {margin:2px 0; font-size:0.85rem;}
 
-.education ul {
-  list-style: none;
-  padding: 0;
-}
+    footer {text-align:center; padding:8px; background:#222; color:#fff; font-size:0.75rem;}
 
-.education li {
-  margin: 10px 0;
-  font-size: 18px;
-}
+    #back-to-top {
+      position:fixed; bottom:10px; right:10px; background:#ff4c4c; color:#fff;
+      border:none; padding:6px 8px; border-radius:50%; font-size:14px; cursor:pointer;
+      box-shadow:0 3px 6px rgba(0,0,0,0.3); display:none; z-index:1000; transition: background 0.3s;
+    }
+    #back-to-top:hover {background:#e63c3c;}
 
-.education strong {
-  color: #ff4c4c;
-}
-/*For Social Media icon*/
-.social-links a {
-  display: inline-block;
-  margin: 10px;
-  color: #fff;
-  font-size: 18px;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.social-links a i {
-  margin-right: 8px;
-  font-size: 20px;
-}
-
-.social-links a:hover {
-  color: #ff4c4c;
-}
-
-
+    @media (max-width:1024px){.video-grid{grid-template-columns:repeat(2,1fr);}}
+    @media (max-width:600px){.video-grid{grid-template-columns:1fr;}
+      .nav-links {position:absolute; top:40px; left:0; background:#add8e6; width:100%; flex-direction:column; display:none;}
+      .nav-links.show{display:flex;}
+      .nav-links li{padding:5px; text-align:center;}
+      .hamburger{display:block;}
+      .banner-text{font-size:0.9rem; padding:3px 6px;}
+    }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Pritam Shrestha | Music Portfolio</h1>
+    <h1>Pritam Shrestha</h1>
     <nav>
-      <a href="#videos">Videos</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <div class="hamburger"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#music-videos">Music Videos</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
   </header>
-<div class="banner">
-    <img src="music.png" alt="Banner Image">
+
+  <div class="banner">
+    <img src="image/music.png" alt="Banner Image">
+    <div class="banner-text">Pritam Shrestha – Music & Creativity</div>
   </div>
 
-<section id="videos">
-  <h2>My Music Videos</h2>
-  <div class="videos">
-    
-    <div class="video-card">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/3YbZNBMHxcU?si=IhRwm_iBb4cFYsGr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <h3>California</h3>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am Pritam Shrestha, a songwriter and musician passionate about blending Nepali culture, modern sound, and respect for traditions.</p>
+  </section>
+
+  <section id="music-videos">
+    <h2>Music Videos</h2>
+    <div class="video-grid">
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/3YbZNBMHxcU" allowfullscreen></iframe><div class="title-overlay">California</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/pa5kZdCMXgQ" allowfullscreen></iframe><div class="title-overlay">Maya Gasesi</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/azGWuZLg5mw" allowfullscreen></iframe><div class="title-overlay">Niyati Ko Khel</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/m7RAx7xJ9zc" allowfullscreen></iframe><div class="title-overlay">Makuri Ko Jaal</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/RSabvCvhM9I" allowfullscreen></iframe><div class="title-overlay">Mutu Retiyo</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/Ti41nh2Tmn0" allowfullscreen></iframe><div class="title-overlay">Yespali Ko Dashain-Tihar</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/DzQ-iSdAwNc" allowfullscreen></iframe><div class="title-overlay">Mathi Mathi Maya Bagcha</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/3alMSytLV_o" allowfullscreen></iframe><div class="title-overlay">Mayalu</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/2xhPtPFQCZ8" allowfullscreen></iframe><div class="title-overlay">Timi Hidne Galli</div></div>
+    </div>
+  </section>
+
+  <section id="news">
+    <h2>News</h2>
+    <div class="news-grid">
+      <div class="news-card">
+      <a href="https://shilapatra.com/detail/147999?fbclid=IwY2xjawMyu5dleHRuA2FlbQIxMQABHmuCJNJLPxNhACV9hOtT4e6bUcROwQeuitUFO89XrvbaszHxw2AFCHwXPrXD_aem_qQMqII2QASnIb9ZHmvynDw" target="_blank">
+        <img src="image/news1.jpg" alt="News 1">
+        <p>समीक्षाले लिएर आइन् मन छुने गीत 'मुटु रेटियो'</p>
+      </a>
     </div>
 
-    <div class="video-card">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/pa5kZdCMXgQ?si=0rqo2wRXTRumPFWi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <h3>Maya Gasesi</h3>
+      <div class="news-card">
+      <a href="https://www.onlinekhabar.com/2024/10/1549614/yaspali-dashain-tihar-in-the-voice-of-raju-pariyar?fbclid=IwY2xjawMyxB5leHRuA2FlbQIxMQABHsyUoVe6hiSVCOoOaROgCT0BzFzzQEXigd9oKDm3PjZzQZQDR_OKhyTzNfhN_aem_5JS0e9RfbBSN1HAnFPD1uA" target="_blank">
+        <img src="image/news2.jpg" alt="News 1">
+        <p>राजु परियारको स्वरमा ‘यसपालीको दशैं तिहार’</p>
+      </a>
     </div>
-
-    <div class="video-card">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/azGWuZLg5mw?si=Cn13gEhfy8iYbWId" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <h3>Niyati Ko Khel</h3>
+      <div class="news-card">
+      <a href="https://laligurash.com/content/73066?fbclid=IwZnRzaAMyyVRleHRuA2FlbQIxMQABHgJXXPeYc3Xy55-orgzH3V_n3eAA5DKZQJhtZCNWb1iBvWzeyKNH74pvxg-E_aem_cUY76IVtly5noBD6j8nXFA" target="_blank">
+        <img src="image/news3.jpg" alt="News 1">
+        <p>दोस्रो बि स्टार फिल्मस् म्युजिक अवार्ड हुदै </p>
+      </a>
     </div>
-    <div class="video-card">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/m7RAx7xJ9zc?si=vvVg4ew14m6BgYxd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <h3>Makuri Ko Jaal</h3>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="education">
+      <p>Bachelor’s in Electronics and Communication Engineering, Nepal</p>
+      <p>Master’s in Data Science, 2021</p>
+      <p>Software Development Training, Codify Academy USA</p>
     </div>
+  </section>
 
-    <div class="video-card">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/RSabvCvhM9I?si=ZhaRdkdGhKm7q45w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <h3>Mutu Retiyo</h3>
-    </div>
-
-    <div class="video-card">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Ti41nh2Tmn0?si=NLYgAPvMl96hjdEv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <h3>Yespali Ko Dashain-Tihar</h3>
-    </div>
-    <div class="video-card">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/DzQ-iSdAwNc?si=i9XeujZQkciWK0sr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <h3>Mathi Mathi Maya Bagcha</h3>
-    </div>
-
-    <div class="video-card">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/3alMSytLV_o?si=dizfCxPbGhP0YrkQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <h3>Mayalu</h3>
-    </div>
-
-    <div class="video-card">
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/2xhPtPFQCZ8?si=fHzDnHJ73Fumts4o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <h3>Timi Hidne Galli</h3>
-    </div>
-
-
-  </div>
-</section>
-
-
-  <section id="about" class="about">
-  <h2>About Me</h2>
-  <p>Hello, I am Pritam Shrestha, a songwriter and music creator passionate about blending Nepali culture with modern creativity. This portfolio showcases my musical journey and video projects.</p>
-</section>
-
-<section id="education" class="education">
-  <h2>Education</h2>
-  <ul>
-    <li><strong>Master’s in Data Science</strong>(United States)</li>
-    <li><strong>BE in Electronics & Communication Engineering</strong>(Nepal)</li>
-    <li><strong>Software Development Training</strong>(Codify Academy USA)</li>
-
-  </ul>
-</section>
-
-
-  <section id="contact" class="contact">
+  <section id="contact">
     <h2>Contact</h2>
-    <p>Let’s connect! Find me on:</p>
-    <div class="social-links">
-  <a href="https://www.youtube.com/@pritamshresthaofficial" target="_blank">
-    <i class="fab fa-youtube"></i> YouTube
-  </a>
-  <a href="https://www.facebook.com/composerpritamshrestha" target="_blank">
-    <i class="fab fa-facebook"></i> Facebook Page
-  </a>
-  <a href="https://www.tiktok.com/@pritamshresthaofficial" target="_blank">
-    <i class="fab fa-tiktok"></i> TikTok
-  </a>
-  <span>
-    <i class="fas fa-envelope"></i> Pritamitshrestha@gmail.com
-  </span>
-</div>
-
+    <div class="contact">
+      <p>Email: pritam@example.com</p>
+      <p>
+        Follow me:
+        <a href="https://www.youtube.com/@pritamshresthaofficial" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/composerpritamshrestha" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@pritamshresthaofficial" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </p>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 Pritam Shrestha. All rights reserved.</p>
+    <p>© <span id="year"></span> Pritam Shrestha. All rights reserved.</p>
   </footer>
 
+  <button id="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
   <script>
-    // Optional: highlight active nav link while scrolling
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    const links = document.querySelectorAll(".nav-links a");
+
+    hamburger.addEventListener("click", () => navLinks.classList.toggle("show"));
+    links.forEach(link => link.addEventListener("click", () => navLinks.classList.remove("show")));
+
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {if(entry.isIntersecting) entry.target.classList.add('visible');});
+    }, {threshold:0.1});
+    sections.forEach(section => observer.observe(section));
 
     window.addEventListener("scroll", () => {
-      let current = "";
+      let current="";
       sections.forEach(section => {
-        const sectionTop = section.offsetTop - 60;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute("id");
-        }
+        const sectionTop = section.offsetTop - 40;
+        if(pageYOffset >= sectionTop) current = section.getAttribute("id");
       });
-      navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
-        }
-      });
+      links.forEach(link => {link.classList.remove("active"); if(link.getAttribute("href")==="#"+current) link.classList.add("active");});
+
+      const backToTop = document.getElementById("back-to-top");
+      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
     });
 
-
+    document.getElementById("back-to-top").addEventListener("click", () => {
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
   </script>
-
 </body>
 </html>
-
-
