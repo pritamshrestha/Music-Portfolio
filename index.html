@@ -14,7 +14,9 @@
       color: #fff;
     }
     * {margin:0; padding:0; box-sizing:border-box;}
-    html {scroll-behavior: smooth;}
+    html {scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+  }
     body {font-family: Arial, sans-serif; line-height:1.4; background:#f4f4f9; color:#333;}
 
     /* Navbar */
@@ -26,15 +28,15 @@
       top: 0;
       z-index: 1000;
     }
-    header h1 {text-align:center; font-size:1rem; margin-bottom:2px;}
+    header h1 {text-align:center; font-size:2rem; color: #fff; margin-bottom:2px;}
 
     nav {
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      max-width:1200px;
-      margin:auto;
-    }
+      display: flex;
+      justify-content: center; /* Center items */
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+}
     .nav-links {
       display:flex;
       list-style:none;
@@ -42,7 +44,7 @@
     }
     .nav-links li a {
       text-decoration:none;
-      color:#000;
+      color:#fff;
       font-weight:bold;
       font-size:0.85rem;
       transition:0.3s;
@@ -62,7 +64,7 @@
 
     /* Sections */
     section {
-      padding:5px 10px;
+      padding:10px 10px;
       max-width:1200px;
       margin:auto;
       opacity:0; transform: translateY(3px);
@@ -126,7 +128,7 @@
 </head>
 <body>
   <header>
-    <h1>Pritam Shrestha</h1>
+    <h1>Pritam Shrestha | Music Portfolio</h1>
     <nav>
       <div class="hamburger"><i class="fas fa-bars"></i></div>
       <ul class="nav-links">
@@ -143,11 +145,6 @@
     <img src="music.png" alt="Banner Image">
     <div class="banner-text">Pritam Shrestha – Music & Creativity</div>
   </div>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am Pritam Shrestha, a songwriter and musician passionate about blending Nepali culture, modern sound, and respect for traditions.</p>
-  </section>
 
   <section id="music-videos">
     <h2>Music Videos</h2>
@@ -187,25 +184,47 @@
       </a>
     </div>
   </section>
+ <section id="about">
+  <div style="max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+    
+    <!-- Image -->
+    <div style="flex: 1; min-width: 280px; text-align: center;">
+      <img src="pritam.jpg" alt="Pritam Shrestha" 
+           style="width: 100%; max-width: 350px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    </div>
+    
+    <!-- Text -->
+    <div style="flex: 2; min-width: 300px;">
+      <h2 style="font-size: 2rem; margin-bottom: 15px; color: #333;">About Me</h2>
+      
+      <p style="font-size: 1.1rem; line-height: 1.6; color: #555;">
+        Namaste, It's me PRITAM SHRESTHA. I’m deeply connected to <strong>Nepali music and culture</strong>. 
+        I’ve written ghazals and songs since childhood and continue to create music that blends 
+        tradition with modern technology.
+      </p>
+    </div>
 
+  </div>
+</Section>
   <section id="education">
-    <h2>Education</h2>
+    <h2>Education & Profession</h2>
     <div class="education">
+      <p>Master’s in Data Science, USA</p>
       <p>Bachelor’s in Electronics and Communication Engineering, Nepal</p>
-      <p>Master’s in Data Science, 2021</p>
       <p>Software Development Training, Codify Academy USA</p>
+      <p>Data Analyst at CCHCS (California Correctional Health Care Services)</p>
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
     <div class="contact">
-      <p>Email: pritam@example.com</p>
+      <p>Email: pritamitshrestha@gmail.com</p>
       <p>
         Follow me:
-        <a href="https://www.youtube.com/@pritamshresthaofficial" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.facebook.com/composerpritamshrestha" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.tiktok.com/@pritamshresthaofficial" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@pritamshresthaofficial" target="_blank">Youtube:<i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/composerpritamshrestha" target="_blank">Facebook Page:<i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@pritamshresthaofficial" target="_blank">TikTok:<i class="fab fa-tiktok"></i></a>
       </p>
     </div>
   </section>
@@ -250,7 +269,6 @@
   </script>
 </body>
 </html>
-
 
 
 
